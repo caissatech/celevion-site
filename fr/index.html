@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Celevion — petits jeux mobiles solo hors ligne</title>
+<meta name="description" content="Celevion est un studio indépendant à taille humaine, en France, qui crée de petits jeux mobiles solo hors ligne pour Android.">
+<link rel="canonical" href="https://celevion.com/fr/">
+<link rel="alternate" hreflang="en" href="https://celevion.com/">
+<link rel="alternate" hreflang="fr" href="https://celevion.com/fr/">
+<link rel="alternate" hreflang="x-default" href="https://celevion.com/">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'%3E%3Crect width='48' height='48' rx='12' fill='%232f6df6'/%3E%3Cpath d='M32 17a11 11 0 1 0 0 14' fill='none' stroke='%23ffffff' stroke-width='6' stroke-linecap='round'/%3E%3C/svg%3E">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Celevion">
+<meta property="og:title" content="Celevion — petits jeux mobiles solo hors ligne">
+<meta property="og:description" content="Studio indépendant à taille humaine, en France, qui crée de petits jeux mobiles solo hors ligne pour Android.">
+<meta property="og:url" content="https://celevion.com/fr/">
+<meta property="og:locale" content="fr_FR">
+<meta property="og:locale:alternate" content="en">
+<meta name="theme-color" content="#2f6df6">
+<style>
+:root {
+  color-scheme: light dark;
+  --bg: #ffffff;
+  --fg: #14181f;
+  --muted: #4d5764;
+  --line: #d9dee6;
+  --accent: #1f5fd0;
+  --card: #f6f8fb;
+  --radius: 14px;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #0e1116;
+    --fg: #e8ecf2;
+    --muted: #a9b3c1;
+    --line: #2a313b;
+    --accent: #8ab4ff;
+    --card: #161b22;
+  }
+}
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--fg);
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+  font-size: 1rem;
+  line-height: 1.6;
+}
+.wrap { max-width: 42rem; margin: 0 auto; padding: 1.5rem 1rem 3rem; }
+a { color: var(--accent); }
+a:focus-visible, button:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; border-radius: 4px; }
+.skip {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  background: var(--bg);
+  color: var(--fg);
+  padding: 0.6rem 1rem;
+  border: 2px solid var(--accent);
+  border-radius: 8px;
+  z-index: 10;
+}
+.skip:focus { left: 1rem; top: 1rem; }
+header { display: flex; flex-wrap: wrap; gap: 0.75rem 1rem; align-items: center; justify-content: space-between; padding-bottom: 1.25rem; border-bottom: 1px solid var(--line); }
+.brand { display: flex; align-items: center; gap: 0.6rem; font-size: 1.2rem; font-weight: 700; letter-spacing: 0.01em; margin: 0; }
+.brand svg { color: var(--accent); flex: none; }
+.lang { display: flex; gap: 0.75rem; font-size: 0.9rem; }
+.lang a { text-decoration: none; padding: 0.2rem 0; border-bottom: 1px solid transparent; }
+.lang a:hover { border-bottom-color: currentColor; }
+.lang [aria-current="page"] { color: var(--muted); border-bottom-color: var(--line); cursor: default; }
+h1 { font-size: 1.9rem; line-height: 1.2; margin: 2rem 0 0.75rem; letter-spacing: -0.01em; }
+.lead { font-size: 1.1rem; color: var(--muted); margin: 0 0 2rem; }
+section { margin: 0 0 2rem; }
+h2 { font-size: 1.15rem; margin: 0 0 0.6rem; letter-spacing: 0.01em; }
+p { margin: 0 0 0.9rem; }
+ul { margin: 0; padding-left: 1.2rem; }
+li { margin-bottom: 0.45rem; }
+.card { background: var(--card); border: 1px solid var(--line); border-radius: var(--radius); padding: 1rem 1.1rem; }
+.card p:last-child, .card ul:last-child { margin-bottom: 0; }
+dl { margin: 0; }
+dt { font-weight: 600; margin-top: 0.8rem; }
+dt:first-child { margin-top: 0; }
+dd { margin: 0.15rem 0 0; color: var(--muted); }
+footer { border-top: 1px solid var(--line); padding-top: 1.25rem; color: var(--muted); font-size: 0.9rem; }
+footer p { margin: 0 0 0.4rem; }
+@media (max-width: 24rem) {
+  h1 { font-size: 1.55rem; }
+  .lead { font-size: 1rem; }
+}
+@media (prefers-reduced-motion: reduce) {
+  * { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
+}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Aller au contenu</a>
+<div class="wrap">
+  <header>
+    <p class="brand">
+      <svg width="36" height="36" viewBox="0 0 48 48" aria-hidden="true" focusable="false">
+        <rect width="48" height="48" rx="12" fill="currentColor" opacity="0.14"></rect>
+        <path d="M32 17a11 11 0 1 0 0 14" fill="none" stroke="currentColor" stroke-width="6" stroke-linecap="round"></path>
+      </svg>
+      Celevion
+    </p>
+    <nav class="lang" aria-label="Langue">
+      <a href="../index.html" hreflang="en" lang="en">English</a>
+      <a href="index.html" aria-current="page" hreflang="fr" lang="fr">Français</a>
+    </nav>
+  </header>
+
+  <main id="main">
+    <h1>De petits jeux mobiles solo hors ligne, faits par une seule personne en France.</h1>
+    <p class="lead">Celevion est un studio indépendant fondé par Loïc Cantin. Nous créons des jeux compacts en solo, qui vivent entièrement sur votre téléphone : pas de compte, pas de serveur, pas de connexion une fois le jeu installé.</p>
+
+    <section>
+      <h2>Ce que nous faisons</h2>
+      <div class="card">
+        <dl>
+          <dt>Des sessions courtes et complètes</dt>
+          <dd>Des jeux construits autour d'une idée claire, jouables en quelques minutes et satisfaisants jusqu'au bout.</dd>
+          <dt>Jouables entièrement hors ligne</dt>
+          <dd>Aucun réseau nécessaire pour jouer, aucun backend à maintenir, rien à créer comme compte.</dd>
+          <dt>En solo</dt>
+          <dd>Joueur unique, conçu pour être compris sans mode d'emploi ni mur de tutoriel.</dd>
+        </dl>
+      </div>
+    </section>
+
+    <section>
+      <h2>Le studio</h2>
+      <p>Fondé en 2026 et basé en France, Celevion est un studio à taille humaine : conception, programmation, graphismes et publication sont assurés en interne, sans éditeur intermédiaire et sans équipe qui ralentisse le tempo. Notre premier titre est en cours de développement pour Android, sur Google Play.</p>
+      <p>Nous faisons des jeux pour qui veut installer un petit jeu, comprendre en une minute et le garder — pas un service qui réclame son attention tous les jours.</p>
+    </section>
+
+    <section>
+      <h2>Vie privée</h2>
+      <p>Ce site est du HTML et du CSS purs : pas de JavaScript, pas de police externe, pas de mesure d'audience, pas de cookie, aucun contenu tiers. Rien de votre visite n'est enregistré ici, et rien ne quitte votre navigateur.</p>
+    </section>
+
+    <section>
+      <h2>Contact</h2>
+      <p>Pour toute question sur le studio, les jeux ou le compte développeur, écrivez à <a href="mailto:contact@celevion.com">contact@celevion.com</a>.</p>
+    </section>
+  </main>
+
+  <footer>
+    <p>© 2026 Celevion — Loïc Cantin, France.</p>
+    <p><a href="mailto:contact@celevion.com">contact@celevion.com</a></p>
+  </footer>
+</div>
+</body>
+</html>
