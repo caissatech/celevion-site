@@ -4,92 +4,151 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Celevion — small offline solo mobile games</title>
-<meta name="description" content="Celevion is an independent one-person studio in France making small, offline, single-player mobile games for Android.">
+<meta name="description" content="Celevion is an independent studio founded by Loïc Cantin in France, making small, offline, single-player mobile games for Android.">
 <link rel="canonical" href="https://celevion.com/">
 <link rel="alternate" hreflang="en" href="https://celevion.com/">
 <link rel="alternate" hreflang="fr" href="https://celevion.com/fr/">
 <link rel="alternate" hreflang="x-default" href="https://celevion.com/">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'%3E%3Crect width='48' height='48' rx='12' fill='%232f6df6'/%3E%3Cpath d='M32 17a11 11 0 1 0 0 14' fill='none' stroke='%23ffffff' stroke-width='6' stroke-linecap='round'/%3E%3C/svg%3E">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23121a33'/%3E%3Cpath d='M44.86 16.68A20 20 0 1 0 44.86 47.32' fill='none' stroke='%23f3f5fb' stroke-width='8' stroke-linecap='round'/%3E%3Ccircle cx='52' cy='32' r='6' fill='%23f5b83d'/%3E%3C/svg%3E">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Celevion">
 <meta property="og:title" content="Celevion — small offline solo mobile games">
-<meta property="og:description" content="Independent one-person studio in France making small, offline, single-player mobile games for Android.">
+<meta property="og:description" content="Independent studio founded by Loïc Cantin in France, making small, offline, single-player mobile games for Android.">
 <meta property="og:url" content="https://celevion.com/">
 <meta property="og:locale" content="en">
 <meta property="og:locale:alternate" content="fr">
-<meta name="theme-color" content="#2f6df6">
+<meta name="theme-color" content="#f3f5fb" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0f1633" media="(prefers-color-scheme: dark)">
 <style>
+/* Celevion — "a pocket sky chart": night ink on blue-tinted paper, an orbit drawn in one
+   stroke where each game is a small, complete body. */
 :root {
   color-scheme: light dark;
-  --bg: #ffffff;
-  --fg: #14181f;
-  --muted: #4d5764;
-  --line: #d9dee6;
-  --accent: #1f5fd0;
-  --card: #f6f8fb;
-  --radius: 14px;
+  --paper: #f3f5fb;
+  --band: #e6ebf7;
+  --ink: #121a33;
+  --muted: #4a5573;
+  --line: #c9d2e6;
+  --link: #2d4bd0;
+  --star: #e8a317;
+  --display: ui-rounded, "SF Pro Rounded", "Lato", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --text: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+  --gutter: clamp(1rem, 4vw, 3rem);
+  --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
 }
 @media (prefers-color-scheme: dark) {
   :root {
-    --bg: #0e1116;
-    --fg: #e8ecf2;
-    --muted: #a9b3c1;
-    --line: #2a313b;
-    --accent: #8ab4ff;
-    --card: #161b22;
+    --paper: #0f1633;
+    --band: #162045;
+    --ink: #e9edf8;
+    --muted: #a6b0cc;
+    --line: #2a3566;
+    --link: #a3b5ff;
+    --star: #f5b83d;
   }
 }
 * { box-sizing: border-box; }
 html { -webkit-text-size-adjust: 100%; }
 body {
   margin: 0;
-  background: var(--bg);
-  color: var(--fg);
-  font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--text);
   font-size: 1rem;
   line-height: 1.6;
 }
-.wrap { max-width: 42rem; margin: 0 auto; padding: 1.5rem 1rem 3rem; }
-a { color: var(--accent); }
-a:focus-visible, button:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; border-radius: 4px; }
+::selection { background: var(--star); color: #121a33; }
+.wrap { width: min(100% - 2 * var(--gutter), 78rem); margin-inline: auto; }
+
+a { color: var(--link); text-decoration-thickness: 1px; text-underline-offset: 0.2em; transition: text-decoration-color 160ms ease; }
+a:hover { text-decoration-color: var(--star); }
+a:focus-visible { outline: 3px solid var(--link); outline-offset: 3px; border-radius: 4px; }
 .skip {
   position: absolute;
   left: -9999px;
   top: 0;
-  background: var(--bg);
-  color: var(--fg);
+  background: var(--paper);
+  color: var(--ink);
   padding: 0.6rem 1rem;
-  border: 2px solid var(--accent);
+  border: 2px solid var(--link);
   border-radius: 8px;
   z-index: 10;
 }
 .skip:focus { left: 1rem; top: 1rem; }
-header { display: flex; flex-wrap: wrap; gap: 0.75rem 1rem; align-items: center; justify-content: space-between; padding-bottom: 1.25rem; border-bottom: 1px solid var(--line); }
-.brand { display: flex; align-items: center; gap: 0.6rem; font-size: 1.2rem; font-weight: 700; letter-spacing: 0.01em; margin: 0; }
-.brand svg { color: var(--accent); flex: none; }
-.lang { display: flex; gap: 0.75rem; font-size: 0.9rem; }
-.lang a { text-decoration: none; padding: 0.2rem 0; border-bottom: 1px solid transparent; }
-.lang a:hover { border-bottom-color: currentColor; }
+
+/* Mark and wordmark: one geometry, coloured by the theme. */
+.m-track { fill: none; stroke: currentColor; stroke-width: 8; stroke-linecap: round; }
+.m-ball { fill: var(--star); }
+.m-word { fill: currentColor; }
+
+.top { display: flex; flex-wrap: wrap; gap: 1rem 2rem; align-items: center; justify-content: space-between; padding-block: 1.5rem; }
+.lockup { margin: 0; line-height: 0; color: var(--ink); }
+.lockup svg { height: 2.5rem; width: auto; display: block; }
+.lang { display: flex; gap: 1.25rem; font-size: 0.95rem; }
+.lang a { text-decoration: none; padding-block: 0.6rem; color: var(--ink); border-bottom: 2px solid transparent; transition: border-color 160ms ease; }
+.lang a:hover { border-bottom-color: var(--star); }
 .lang [aria-current="page"] { color: var(--muted); border-bottom-color: var(--line); cursor: default; }
-h1 { font-size: 1.9rem; line-height: 1.2; margin: 2rem 0 0.75rem; letter-spacing: -0.01em; }
-.lead { font-size: 1.1rem; color: var(--muted); margin: 0 0 2rem; }
-section { margin: 0 0 2rem; }
-h2 { font-size: 1.15rem; margin: 0 0 0.6rem; letter-spacing: 0.01em; }
-p { margin: 0 0 0.9rem; }
-ul { margin: 0; padding-left: 1.2rem; }
-li { margin-bottom: 0.45rem; }
-.card { background: var(--card); border: 1px solid var(--line); border-radius: var(--radius); padding: 1rem 1.1rem; }
-.card p:last-child, .card ul:last-child { margin-bottom: 0; }
-dl { margin: 0; }
-dt { font-weight: 600; margin-top: 0.8rem; }
-dt:first-child { margin-top: 0; }
-dd { margin: 0.15rem 0 0; color: var(--muted); }
-footer { border-top: 1px solid var(--line); padding-top: 1.25rem; color: var(--muted); font-size: 0.9rem; }
-footer p { margin: 0 0 0.4rem; }
-@media (max-width: 24rem) {
-  h1 { font-size: 1.55rem; }
-  .lead { font-size: 1rem; }
+
+h1, h2, dt { font-family: var(--display); text-wrap: balance; }
+h1 {
+  font-size: clamp(2.25rem, 1.2rem + 4.2vw, 5.25rem);
+  line-height: 1.02;
+  letter-spacing: -0.03em;
+  font-weight: 800;
+  margin: 0 0 1.5rem;
 }
+h2 { font-size: clamp(1.45rem, 1.15rem + 1vw, 2rem); line-height: 1.15; letter-spacing: -0.015em; font-weight: 800; margin: 0 0 1rem; }
+p { margin: 0 0 1rem; text-wrap: pretty; }
+
+.hero { display: grid; gap: 2.5rem; align-items: center; padding-block: clamp(2rem, 6vw, 6rem) clamp(3rem, 7vw, 7rem); }
+.lead { font-size: clamp(1.1rem, 0.95rem + 0.5vw, 1.4rem); line-height: 1.5; color: var(--muted); max-width: 40ch; margin: 0; }
+.orbit { width: 100%; max-width: 17rem; justify-self: center; color: var(--ink); overflow: visible; }
+.ring { fill: none; stroke: var(--line); stroke-width: 1.5; }
+.track { fill: none; stroke: currentColor; stroke-width: 36.8; stroke-linecap: round; }
+.ball circle { fill: var(--star); }
+.moon { fill: var(--link); }
+.moon2 { fill: var(--muted); }
+.ball, .moon-a, .moon-b { transform-box: view-box; transform-origin: 200px 200px; }
+
+.band { background: var(--band); border-block: 1px solid var(--line); padding-block: clamp(2.5rem, 5vw, 4.5rem); }
+.traits { display: grid; gap: 2rem; margin: 2rem 0 0; }
+.traits > div { border-top: 1px solid var(--line); padding-top: 1.25rem; }
+dt { font-size: 1.3rem; line-height: 1.25; font-weight: 800; letter-spacing: -0.01em; }
+dd { margin: 0.5rem 0 0; color: var(--muted); max-width: 38ch; }
+
+.split { display: grid; gap: 3rem; padding-block: clamp(3rem, 6vw, 6rem); }
+.studio p { font-size: clamp(1.05rem, 0.98rem + 0.3vw, 1.2rem); max-width: 60ch; }
+.aside { display: grid; gap: 2rem; align-content: start; }
+.aside h2 { font-size: 1.35rem; margin-bottom: 0.6rem; }
+.aside p { color: var(--muted); max-width: 52ch; margin: 0; }
+
+.foot { display: flex; flex-wrap: wrap; align-items: center; gap: 0.5rem 1.5rem; border-top: 1px solid var(--line); padding-block: 2rem 3rem; color: var(--muted); font-size: 0.95rem; }
+.foot p { margin: 0; }
+.foot-mark { width: 1.75rem; height: 1.75rem; color: var(--ink); flex: none; }
+
+@media (min-width: 48rem) {
+  .traits { grid-template-columns: repeat(3, 1fr); gap: clamp(2rem, 4vw, 4rem); }
+}
+@media (min-width: 56rem) {
+  .hero { grid-template-columns: 1.2fr 0.8fr; gap: clamp(2rem, 5vw, 5rem); }
+  .orbit { max-width: 30rem; justify-self: end; }
+  .split { grid-template-columns: 7fr 5fr; gap: clamp(3rem, 6vw, 6rem); }
+  .aside { border-left: 1px solid var(--line); padding-left: clamp(2rem, 4vw, 4rem); }
+}
+
+/* One authored moment, on load only: the headline rises, the ball rolls once along its
+   orbit into the gap, the two small bodies settle. Content is visible without it. */
+@media (prefers-reduced-motion: no-preference) {
+  .hero-text > * { animation: rise 600ms var(--ease-out) both; }
+  .hero-text > :nth-child(2) { animation-delay: 80ms; }
+  .ball { animation: roll 1500ms var(--ease-out) 150ms both; }
+  .moon-a { animation: settle-a 1800ms var(--ease-out) 200ms both; }
+  .moon-b { animation: settle-b 2000ms var(--ease-out) 250ms both; }
+}
+@keyframes rise { from { opacity: 0; transform: translateY(10px); } }
+@keyframes roll { from { opacity: 0; transform: rotate(-320deg); } 12% { opacity: 1; } }
+@keyframes settle-a { from { opacity: 0; transform: rotate(-70deg); } }
+@keyframes settle-b { from { opacity: 0; transform: rotate(-110deg); } }
 @media (prefers-reduced-motion: reduce) {
   * { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
 }
@@ -97,60 +156,80 @@ footer p { margin: 0 0 0.4rem; }
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
-<div class="wrap">
-  <header>
-    <p class="brand">
-      <svg width="36" height="36" viewBox="0 0 48 48" aria-hidden="true" focusable="false">
-        <rect width="48" height="48" rx="12" fill="currentColor" opacity="0.14"></rect>
-        <path d="M32 17a11 11 0 1 0 0 14" fill="none" stroke="currentColor" stroke-width="6" stroke-linecap="round"></path>
-      </svg>
-      Celevion
-    </p>
-    <nav class="lang" aria-label="Language">
-      <a href="index.html" aria-current="page" hreflang="en" lang="en">English</a>
-      <a href="fr/index.html" hreflang="fr" lang="fr">Français</a>
-    </nav>
-  </header>
+<header class="top wrap">
+  <p class="lockup"><svg viewBox="0 0 252 64" role="img" aria-label="Celevion">
+    <path class="m-track" d="M44.86 16.68A20 20 0 1 0 44.86 47.32"></path>
+    <circle class="m-ball" cx="52" cy="32" r="6"></circle>
+    <path class="m-word" transform="translate(80 17) scale(0.3)" d="M78.6 75.4Q80.3 75.4 81.5 76.6L89.7 85.4Q83.6 93.1 74.6 97.1Q65.6 101.1 53.2 101.1Q42 101.1 33 97.3Q24.1 93.5 17.8 86.6Q11.5 79.8 8.1 70.4Q4.8 61.1 4.8 50Q4.8 42.5 6.4 35.8Q8 29.1 11.1 23.4Q14.2 17.8 18.6 13.2Q22.9 8.7 28.5 5.5Q34 2.3 40.5 0.6Q47 -1.1 54.4 -1.1Q59.9 -1.1 64.8 -0.1Q69.7 0.8 74 2.5Q78.3 4.3 81.9 6.7Q85.5 9.2 88.4 12.1L81.5 21.6Q80.8 22.5 79.9 23.2Q78.9 23.8 77.3 23.8Q75.6 23.8 73.9 22.7Q72.2 21.5 69.8 20.1Q67.3 18.6 63.6 17.4Q60 16.3 54.3 16.3Q48 16.3 42.8 18.5Q37.6 20.8 33.8 25.1Q30 29.4 28 35.7Q25.9 42 25.9 50Q25.9 58 28.2 64.3Q30.4 70.6 34.3 75Q38.2 79.3 43.4 81.6Q48.6 83.8 54.5 83.8Q58 83.8 60.9 83.5Q63.7 83.1 66.2 82.3Q68.6 81.5 70.8 80.2Q73 78.8 75.2 76.8Q75.9 76.2 76.8 75.8Q77.6 75.4 78.6 75.4ZM146.5 56.1Q146.5 53.1 145.7 50.4Q144.9 47.8 143.2 45.7Q141.5 43.6 138.9 42.4Q136.3 41.2 132.6 41.2Q125.8 41.2 121.9 45.1Q118.1 48.9 116.9 56.1ZM116.6 67.4Q117.5 77.4 122.3 82Q127.1 86.6 134.8 86.6Q138.7 86.6 141.6 85.7Q144.5 84.8 146.6 83.6Q148.8 82.5 150.6 81.6Q152.3 80.6 154 80.6Q156.2 80.6 157.5 82.3L163 89.2Q160 92.7 156.3 95Q152.7 97.3 148.7 98.7Q144.8 100 140.8 100.5Q136.8 101 133.1 101Q125.6 101 119.2 98.6Q112.7 96.1 108 91.4Q103.2 86.6 100.4 79.5Q97.7 72.4 97.7 63Q97.7 55.8 100 49.3Q102.4 42.9 106.9 38.2Q111.4 33.4 117.8 30.6Q124.2 27.8 132.3 27.8Q139.1 27.8 144.8 30Q150.6 32.2 154.8 36.3Q158.9 40.5 161.2 46.5Q163.5 52.5 163.5 60.2Q163.5 62.4 163.3 63.7Q163.1 65.1 162.6 66Q162.2 66.8 161.3 67.1Q160.5 67.4 159.2 67.4ZM197.2 -2.8V100H178.2V-2.8ZM260.9 56.1Q260.9 53.1 260.1 50.4Q259.3 47.8 257.6 45.7Q255.9 43.6 253.3 42.4Q250.7 41.2 247 41.2Q240.2 41.2 236.3 45.1Q232.5 48.9 231.3 56.1ZM231 67.4Q231.9 77.4 236.7 82Q241.5 86.6 249.2 86.6Q253.1 86.6 256 85.7Q258.9 84.8 261 83.6Q263.2 82.5 265 81.6Q266.7 80.6 268.4 80.6Q270.6 80.6 271.9 82.3L277.4 89.2Q274.4 92.7 270.7 95Q267.1 97.3 263.1 98.7Q259.2 100 255.2 100.5Q251.2 101 247.5 101Q240 101 233.6 98.6Q227.2 96.1 222.4 91.4Q217.6 86.6 214.8 79.5Q212.1 72.4 212.1 63Q212.1 55.8 214.4 49.3Q216.8 42.9 221.3 38.2Q225.8 33.4 232.2 30.6Q238.6 27.8 246.7 27.8Q253.5 27.8 259.2 30Q265 32.2 269.2 36.3Q273.3 40.5 275.6 46.5Q277.9 52.5 277.9 60.2Q277.9 62.4 277.7 63.7Q277.5 65.1 277.1 66Q276.6 66.8 275.7 67.1Q274.9 67.4 273.6 67.4ZM357.9 28.9 330 100H312.7L284.8 28.9H300.6Q302.7 28.9 304.1 29.9Q305.4 30.9 306 32.4L317.9 67.5Q319.1 71.1 320 74.5Q320.9 77.9 321.6 81.4Q322.3 77.9 323.3 74.5Q324.2 71.1 325.4 67.5L337.8 32.4Q338.2 30.9 339.6 29.9Q341 28.9 342.9 28.9ZM388.3 28.9V100H369.3V28.9ZM390.6 8.8Q390.6 11.2 389.6 13.2Q388.6 15.3 387 16.9Q385.4 18.5 383.2 19.4Q381 20.3 378.6 20.3Q376.2 20.3 374.1 19.4Q372 18.5 370.4 16.9Q368.8 15.3 367.9 13.2Q367 11.2 367 8.8Q367 6.3 367.9 4.2Q368.8 2.1 370.4 0.6Q372 -1 374.1 -1.9Q376.2 -2.8 378.6 -2.8Q381 -2.8 383.2 -1.9Q385.4 -1 387 0.6Q388.6 2.1 389.6 4.2Q390.6 6.3 390.6 8.8ZM439.4 27.8Q447.3 27.8 453.9 30.4Q460.4 32.9 465.1 37.7Q469.8 42.4 472.4 49.1Q474.9 55.9 474.9 64.4Q474.9 72.8 472.4 79.6Q469.8 86.4 465.1 91.2Q460.4 95.9 453.9 98.5Q447.3 101 439.4 101Q431.3 101 424.7 98.5Q418.1 95.9 413.4 91.2Q408.8 86.4 406.2 79.6Q403.6 72.8 403.6 64.4Q403.6 55.9 406.2 49.1Q408.8 42.4 413.4 37.7Q418.1 32.9 424.7 30.4Q431.3 27.8 439.4 27.8ZM439.4 86.8Q447.5 86.8 451.4 81.2Q455.3 75.5 455.3 64.4Q455.3 53.4 451.4 47.8Q447.5 42.2 439.4 42.2Q431 42.2 427.1 47.8Q423.2 53.4 423.2 64.4Q423.2 75.5 427.1 81.2Q431 86.8 439.4 86.8ZM507.3 37.2Q509.4 35.1 511.8 33.4Q514.1 31.7 516.6 30.5Q519.2 29.2 522.2 28.5Q525.2 27.8 528.7 27.8Q534.5 27.8 539 29.8Q543.5 31.8 546.6 35.4Q549.6 39 551.2 44Q552.7 48.9 552.7 54.9V100H533.8V54.9Q533.8 48.9 531 45.7Q528.3 42.4 522.9 42.4Q518.9 42.4 515.4 44.1Q511.9 45.8 508.7 48.9V100H489.7V28.9H501.4Q505 28.9 506.1 32.3Z"></path>
+  </svg></p>
+  <nav class="lang" aria-label="Language">
+    <a href="index.html" aria-current="page" hreflang="en" lang="en">English</a>
+    <a href="fr/index.html" hreflang="fr" lang="fr">Français</a>
+  </nav>
+</header>
 
-  <main id="main">
-    <h1>Small offline solo mobile games, made by one person in France.</h1>
-    <p class="lead">Celevion is an independent studio founded by Loïc Cantin. We build compact, single-player games that live entirely on your phone: no account, no server, no connection once the game is installed.</p>
+<main id="main">
+  <section class="hero wrap" aria-labelledby="hero-title">
+    <div class="hero-text">
+      <h1 id="hero-title">Small offline solo mobile games, made in France.</h1>
+      <p class="lead">Celevion is an independent studio founded by Loïc Cantin. We build compact, single-player games that live entirely on your phone: no account, no server, no connection once the game is installed.</p>
+    </div>
+    <svg class="orbit" viewBox="0 0 400 400" aria-hidden="true" focusable="false">
+      <circle class="ring" cx="200" cy="200" r="186"></circle>
+      <circle class="ring" cx="200" cy="200" r="146"></circle>
+      <g class="moon-a"><circle class="moon" cx="331.5" cy="68.5" r="7"></circle></g>
+      <g class="moon-b"><circle class="moon2" cx="96.8" cy="303.2" r="5"></circle></g>
+      <path class="track" d="M259.1 129.5A92 92 0 1 0 259.1 270.5"></path>
+      <g class="ball"><circle cx="292" cy="200" r="27.6"></circle></g>
+    </svg>
+  </section>
 
-    <section>
-      <h2>What we make</h2>
-      <div class="card">
-        <dl>
+  <section class="band" aria-labelledby="make-title">
+    <div class="wrap">
+      <h2 id="make-title">What we make</h2>
+      <dl class="traits">
+        <div>
           <dt>Short, complete sessions</dt>
           <dd>Games built around one clear idea, playable in a few minutes and satisfying to finish.</dd>
+        </div>
+        <div>
           <dt>Played fully offline</dt>
           <dd>No network needed to play, no backend to run, nothing to sign up for.</dd>
+        </div>
+        <div>
           <dt>On your own</dt>
           <dd>Single-player, designed to be understood without a tutorial wall or a manual.</dd>
-        </dl>
-      </div>
-    </section>
+        </div>
+      </dl>
+    </div>
+  </section>
 
-    <section>
-      <h2>The studio</h2>
-      <p>Founded in 2026 and based in France, Celevion is a one-person studio: design, programming, artwork and publishing are all handled in-house, with no publisher in between and no team to slow things down. Our first title is in development for Android, on Google Play.</p>
+  <div class="split wrap">
+    <section class="studio" aria-labelledby="studio-title">
+      <h2 id="studio-title">The studio</h2>
+      <p>Founded in 2026 and based in France, Celevion handles design, programming, artwork and publishing in-house, with no publisher in between. Our first title is in development for Android, on Google Play.</p>
       <p>We build for players who want a small game they can install, understand in a minute and keep, not a service that asks for their attention every day.</p>
     </section>
+    <div class="aside">
+      <section aria-labelledby="privacy-title">
+        <h2 id="privacy-title">Privacy</h2>
+        <p>This site is plain HTML and CSS: no JavaScript, no external fonts, no analytics, no cookies, no third-party content of any kind. Nothing about your visit is recorded here, and nothing leaves your browser.</p>
+      </section>
+      <section aria-labelledby="contact-title">
+        <h2 id="contact-title">Contact</h2>
+        <p>For anything about the studio, the games or the developer account, write to <a href="mailto:contact@celevion.com">contact@celevion.com</a>.</p>
+      </section>
+    </div>
+  </div>
+</main>
 
-    <section>
-      <h2>Privacy</h2>
-      <p>This site is plain HTML and CSS: no JavaScript, no external fonts, no analytics, no cookies, no third-party content of any kind. Nothing about your visit is recorded here, and nothing leaves your browser.</p>
-    </section>
-
-    <section>
-      <h2>Contact</h2>
-      <p>For anything about the studio, the games or the developer account, write to <a href="mailto:contact@celevion.com">contact@celevion.com</a>.</p>
-    </section>
-  </main>
-
-  <footer>
-    <p>© 2026 Celevion — Loïc Cantin, France.</p>
-    <p><a href="mailto:contact@celevion.com">contact@celevion.com</a></p>
-  </footer>
-</div>
+<footer class="foot wrap">
+  <svg class="foot-mark" viewBox="0 0 64 64" aria-hidden="true" focusable="false">
+    <path class="m-track" d="M44.86 16.68A20 20 0 1 0 44.86 47.32"></path>
+    <circle class="m-ball" cx="52" cy="32" r="6"></circle>
+  </svg>
+  <p>© 2026 Celevion — Loïc Cantin, France.</p>
+  <p><a href="mailto:contact@celevion.com">contact@celevion.com</a></p>
+</footer>
 </body>
 </html>
