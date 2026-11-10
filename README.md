@@ -3,12 +3,22 @@
 Static "About" site for **Celevion**, an independent studio founded by Loïc Cantin in France,
 making small offline single-player mobile games.
 
-Two pages, no build step, no dependency:
+Four pages, no build step, no dependency:
 
-| Path | Language |
-|---|---|
-| `index.html` | English |
-| `fr/index.html` | French |
+| Path | Language | Page |
+|---|---|---|
+| `index.html` | English | About |
+| `fr/index.html` | French | About |
+| `legal/index.html` | English | Legal notice |
+| `fr/legal/index.html` | French | Legal notice |
+
+The legal notice names the publisher (an individual business, *entrepreneur individuel*), the
+hosting provider (GitHub, Inc., which serves the site through GitHub Pages) and the official
+texts it relies on — LCEN art. 1-1 and 1-2, French Commercial Code art. R. 526-27 and the
+Service Public Entreprendre sheet F37351. Five entries are left for the publisher to fill in
+before the site goes online: company name, address, telephone number, SIREN and EU VAT number.
+They carry the class `todo` and the text "to be completed" / « à compléter »; the pages must
+not be published while any of them remains.
 
 `logo.svg` (512 × 512, opaque night background, mark + wordmark) is the profile picture for
 TikTok, Google Play and YouTube; it stays readable inside a circular crop. It is a flat,
@@ -25,6 +35,7 @@ the star lights up), removed under `prefers-reduced-motion`.
 
 ```sh
 python3 -m http.server 8000   # then open http://localhost:8000/ and http://localhost:8000/fr/
+                              # and the notices at /legal/ and /fr/legal/
 ```
 
 ## Publication steps (owner)
@@ -64,7 +75,7 @@ python3 -m http.server 8000   # then open http://localhost:8000/ and http://loca
 
 ## Checks run on this content
 
-- HTML validation: `html-validate` (npm), no error on either page.
+- HTML validation: `html-validate` (npm), no error on the four pages.
 - Rendering: headless Chrome screenshots at 360, 1280 and 1920 px, light and dark, no console
   error, no external request, no horizontal overflow.
 - No external request: no `http(s)` asset, no `<script>`, no `@font-face`.
