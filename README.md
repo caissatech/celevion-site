@@ -10,17 +10,16 @@ Two pages, no build step, no dependency:
 | `index.html` | English |
 | `fr/index.html` | French |
 
-`logo.svg` (512 × 512, opaque background, mark + wordmark) is the profile picture for TikTok,
-Google Play and YouTube; it stays readable inside a circular crop. The wordmark is Lato Heavy
-(SIL Open Font License) converted to outlines, so no font is needed to display it.
+`logo.svg` (512 × 512, opaque night background, mark + wordmark) is the profile picture for
+TikTok, Google Play and YouTube; it stays readable inside a circular crop. It is a flat,
+simplified version of logo proposal no. 3 chosen by Loïc on 2026-11-10: a crescent planet
+shaped like a C, a tilted ring passing in front of it, a four-pointed star in the hollow, a
+cyan → magenta gradient, and the wordmark in wide capitals drawn as geometry (no font needed).
 
-Art direction: *a pocket sky chart* — night ink on blue-tinted paper, an orbit drawn in one
-stroke where each game is a small, complete body. The mark is that open orbit with the ball
-that completes it. Palette in CSS variables, light and dark (`prefers-color-scheme`); one
-CSS-only entrance on load, removed under `prefers-reduced-motion`.
-
-Both pages carry their CSS inline. There is no JavaScript, no external font, no tracker and
-no cookie anywhere on the site. `CNAME` holds the custom domain `celevion.com`.
+Art direction: *a pocket sky chart* — night ink on blue-tinted paper, lit by one brand
+gradient, cyan to magenta, carried by the ringed planet of the logo. Palette in CSS variables,
+light and dark (`prefers-color-scheme`); one CSS-only entrance on load (the ring draws itself,
+the star lights up), removed under `prefers-reduced-motion`.
 
 ## Local preview
 

@@ -9,7 +9,7 @@
 <link rel="alternate" hreflang="en" href="https://celevion.com/">
 <link rel="alternate" hreflang="fr" href="https://celevion.com/fr/">
 <link rel="alternate" hreflang="x-default" href="https://celevion.com/">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23121a33'/%3E%3Cpath d='M44.86 16.68A20 20 0 1 0 44.86 47.32' fill='none' stroke='%23f3f5fb' stroke-width='8' stroke-linecap='round'/%3E%3Ccircle cx='52' cy='32' r='6' fill='%23f5b83d'/%3E%3C/svg%3E">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230f1633'/%3E%3Cdefs%3E%3ClinearGradient id='fg' gradientUnits='userSpaceOnUse' x1='4' y1='44' x2='60' y2='20'%3E%3Cstop offset='0' stop-color='%2322d3ee'%3E%3C/stop%3E%3Cstop offset='1' stop-color='%23f04ad8'%3E%3C/stop%3E%3C/linearGradient%3E%3Cmask id='fm' maskUnits='userSpaceOnUse' x='0' y='0' width='64' height='64'%3E%3Crect width='64' height='64' fill='white'%3E%3C/rect%3E%3Ccircle cx='38' cy='26' r='17' fill='black'%3E%3C/circle%3E%3Cpath d='M61 32A29 9 0 0 1 3 32' transform='rotate%28-18 32 32%29' fill='none' stroke='black' stroke-width='8.5'%3E%3C/path%3E%3C/mask%3E%3C/defs%3E%3Cpath d='M32 10a22 22 0 1 0 0.01 0Z' fill='url%28%23fg%29' mask='url%28%23fm%29'%3E%3C/path%3E%3Cpath d='M61 32A29 9 0 0 1 3 32' transform='rotate%28-18 32 32%29' fill='none' stroke='url%28%23fg%29' stroke-width='3.6' stroke-linecap='round'%3E%3C/path%3E%3Cpath d='M38 18.5Q39.1 25.9 46 27Q39.1 28.1 38 35.5Q36.9 28.1 30 27Q36.9 25.9 38 18.5Z' fill='%23ffffff'%3E%3C/path%3E%3C/svg%3E">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Celevion">
 <meta property="og:title" content="Celevion — small offline solo mobile games">
@@ -20,8 +20,8 @@
 <meta name="theme-color" content="#f3f5fb" media="(prefers-color-scheme: light)">
 <meta name="theme-color" content="#0f1633" media="(prefers-color-scheme: dark)">
 <style>
-/* Celevion — "a pocket sky chart": night ink on blue-tinted paper, an orbit drawn in one
-   stroke where each game is a small, complete body. */
+/* Celevion — "a pocket sky chart": night ink on blue-tinted paper, lit by one brand
+   gradient, cyan to magenta, carried by the ringed planet of the logo. */
 :root {
   color-scheme: light dark;
   --paper: #f3f5fb;
@@ -29,8 +29,10 @@
   --ink: #121a33;
   --muted: #4a5573;
   --line: #c9d2e6;
-  --link: #2d4bd0;
-  --star: #e8a317;
+  --link: #a3159a;
+  --c1: #0891b2;
+  --c2: #b5179e;
+  --star: #121a33;
   --display: ui-rounded, "SF Pro Rounded", "Lato", system-ui, -apple-system, "Segoe UI", sans-serif;
   --text: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
   --gutter: clamp(1rem, 4vw, 3rem);
@@ -43,8 +45,10 @@
     --ink: #e9edf8;
     --muted: #a6b0cc;
     --line: #2a3566;
-    --link: #a3b5ff;
-    --star: #f5b83d;
+    --link: #f0a6ff;
+    --c1: #22d3ee;
+    --c2: #f04ad8;
+    --star: #ffffff;
   }
 }
 * { box-sizing: border-box; }
@@ -57,11 +61,11 @@ body {
   font-size: 1rem;
   line-height: 1.6;
 }
-::selection { background: var(--star); color: #121a33; }
+::selection { background: var(--c1); color: #121a33; }
 .wrap { width: min(100% - 2 * var(--gutter), 78rem); margin-inline: auto; }
 
 a { color: var(--link); text-decoration-thickness: 1px; text-underline-offset: 0.2em; transition: text-decoration-color 160ms ease; }
-a:hover { text-decoration-color: var(--star); }
+a:hover { text-decoration-color: var(--c1); }
 a:focus-visible { outline: 3px solid var(--link); outline-offset: 3px; border-radius: 4px; }
 .skip {
   position: absolute;
@@ -76,17 +80,16 @@ a:focus-visible { outline: 3px solid var(--link); outline-offset: 3px; border-ra
 }
 .skip:focus { left: 1rem; top: 1rem; }
 
-/* Mark and wordmark: one geometry, coloured by the theme. */
-.m-track { fill: none; stroke: currentColor; stroke-width: 8; stroke-linecap: round; }
-.m-ball { fill: var(--star); }
-.m-word { fill: currentColor; }
+/* Mark: brand gradient on the planet and ring, star and wordmark in the text colour. */
+.g1 { stop-color: var(--c1); }
+.g2 { stop-color: var(--c2); }
 
 .top { display: flex; flex-wrap: wrap; gap: 1rem 2rem; align-items: center; justify-content: space-between; padding-block: 1.5rem; }
 .lockup { margin: 0; line-height: 0; color: var(--ink); }
 .lockup svg { height: 2.5rem; width: auto; display: block; }
 .lang { display: flex; gap: 1.25rem; font-size: 0.95rem; }
 .lang a { text-decoration: none; padding-block: 0.6rem; color: var(--ink); border-bottom: 2px solid transparent; transition: border-color 160ms ease; }
-.lang a:hover { border-bottom-color: var(--star); }
+.lang a:hover { border-bottom-color: var(--c2); }
 .lang [aria-current="page"] { color: var(--muted); border-bottom-color: var(--line); cursor: default; }
 
 h1, h2, dt { font-family: var(--display); text-wrap: balance; }
@@ -103,14 +106,10 @@ p { margin: 0 0 1rem; text-wrap: pretty; }
 .hero { display: grid; gap: 2.5rem; align-items: center; padding-block: clamp(2rem, 6vw, 6rem) clamp(3rem, 7vw, 7rem); }
 .lead { font-size: clamp(1.1rem, 0.95rem + 0.5vw, 1.4rem); line-height: 1.5; color: var(--muted); max-width: 40ch; margin: 0; }
 .orbit { width: 100%; max-width: 17rem; justify-self: center; color: var(--ink); overflow: visible; }
-.ring { fill: none; stroke: var(--line); stroke-width: 1.5; }
-.track { fill: none; stroke: currentColor; stroke-width: 36.8; stroke-linecap: round; }
-.ball circle { fill: var(--star); }
-.moon { fill: var(--link); }
-.moon2 { fill: var(--muted); }
-.ball, .moon-a, .moon-b { transform-box: view-box; transform-origin: 200px 200px; }
+.ring-bg { fill: none; stroke: var(--line); stroke-width: 1.5; }
+.hero-star { fill: var(--star); transform-box: fill-box; transform-origin: center; }
 
-.band { background: var(--band); border-block: 1px solid var(--line); padding-block: clamp(2.5rem, 5vw, 4.5rem); }
+.band { background: var(--band); border-bottom: 1px solid var(--line); border-top: 2px solid transparent; border-image: linear-gradient(90deg, var(--c1), var(--c2)) 1 0 0 0; padding-block: clamp(2.5rem, 5vw, 4.5rem); }
 .traits { display: grid; gap: 2rem; margin: 2rem 0 0; }
 .traits > div { border-top: 1px solid var(--line); padding-top: 1.25rem; }
 dt { font-size: 1.3rem; line-height: 1.25; font-weight: 800; letter-spacing: -0.01em; }
@@ -136,19 +135,17 @@ dd { margin: 0.5rem 0 0; color: var(--muted); max-width: 38ch; }
   .aside { border-left: 1px solid var(--line); padding-left: clamp(2rem, 4vw, 4rem); }
 }
 
-/* One authored moment, on load only: the headline rises, the ball rolls once along its
-   orbit into the gap, the two small bodies settle. Content is visible without it. */
+/* One authored moment, on load only: the headline rises, the ring draws itself once
+   around the planet, then the star lights up. Content is visible without it. */
 @media (prefers-reduced-motion: no-preference) {
   .hero-text > * { animation: rise 600ms var(--ease-out) both; }
   .hero-text > :nth-child(2) { animation-delay: 80ms; }
-  .ball { animation: roll 1500ms var(--ease-out) 150ms both; }
-  .moon-a { animation: settle-a 1800ms var(--ease-out) 200ms both; }
-  .moon-b { animation: settle-b 2000ms var(--ease-out) 250ms both; }
+  .hero-ring { stroke-dasharray: 100; animation: draw 1400ms var(--ease-out) 150ms both; }
+  .hero-star { animation: twinkle 700ms var(--ease-out) 1100ms both; }
 }
 @keyframes rise { from { opacity: 0; transform: translateY(10px); } }
-@keyframes roll { from { opacity: 0; transform: rotate(-320deg); } 12% { opacity: 1; } }
-@keyframes settle-a { from { opacity: 0; transform: rotate(-70deg); } }
-@keyframes settle-b { from { opacity: 0; transform: rotate(-110deg); } }
+@keyframes draw { from { stroke-dashoffset: 100; } }
+@keyframes twinkle { from { opacity: 0; transform: scale(0.6) rotate(-45deg); } }
 @media (prefers-reduced-motion: reduce) {
   * { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
 }
@@ -157,10 +154,9 @@ dd { margin: 0.5rem 0 0; color: var(--muted); max-width: 38ch; }
 <body>
 <a class="skip" href="#main">Skip to content</a>
 <header class="top wrap">
-  <p class="lockup"><svg viewBox="0 0 252 64" role="img" aria-label="Celevion">
-    <path class="m-track" d="M44.86 16.68A20 20 0 1 0 44.86 47.32"></path>
-    <circle class="m-ball" cx="52" cy="32" r="6"></circle>
-    <path class="m-word" transform="translate(80 17) scale(0.3)" d="M78.6 75.4Q80.3 75.4 81.5 76.6L89.7 85.4Q83.6 93.1 74.6 97.1Q65.6 101.1 53.2 101.1Q42 101.1 33 97.3Q24.1 93.5 17.8 86.6Q11.5 79.8 8.1 70.4Q4.8 61.1 4.8 50Q4.8 42.5 6.4 35.8Q8 29.1 11.1 23.4Q14.2 17.8 18.6 13.2Q22.9 8.7 28.5 5.5Q34 2.3 40.5 0.6Q47 -1.1 54.4 -1.1Q59.9 -1.1 64.8 -0.1Q69.7 0.8 74 2.5Q78.3 4.3 81.9 6.7Q85.5 9.2 88.4 12.1L81.5 21.6Q80.8 22.5 79.9 23.2Q78.9 23.8 77.3 23.8Q75.6 23.8 73.9 22.7Q72.2 21.5 69.8 20.1Q67.3 18.6 63.6 17.4Q60 16.3 54.3 16.3Q48 16.3 42.8 18.5Q37.6 20.8 33.8 25.1Q30 29.4 28 35.7Q25.9 42 25.9 50Q25.9 58 28.2 64.3Q30.4 70.6 34.3 75Q38.2 79.3 43.4 81.6Q48.6 83.8 54.5 83.8Q58 83.8 60.9 83.5Q63.7 83.1 66.2 82.3Q68.6 81.5 70.8 80.2Q73 78.8 75.2 76.8Q75.9 76.2 76.8 75.8Q77.6 75.4 78.6 75.4ZM146.5 56.1Q146.5 53.1 145.7 50.4Q144.9 47.8 143.2 45.7Q141.5 43.6 138.9 42.4Q136.3 41.2 132.6 41.2Q125.8 41.2 121.9 45.1Q118.1 48.9 116.9 56.1ZM116.6 67.4Q117.5 77.4 122.3 82Q127.1 86.6 134.8 86.6Q138.7 86.6 141.6 85.7Q144.5 84.8 146.6 83.6Q148.8 82.5 150.6 81.6Q152.3 80.6 154 80.6Q156.2 80.6 157.5 82.3L163 89.2Q160 92.7 156.3 95Q152.7 97.3 148.7 98.7Q144.8 100 140.8 100.5Q136.8 101 133.1 101Q125.6 101 119.2 98.6Q112.7 96.1 108 91.4Q103.2 86.6 100.4 79.5Q97.7 72.4 97.7 63Q97.7 55.8 100 49.3Q102.4 42.9 106.9 38.2Q111.4 33.4 117.8 30.6Q124.2 27.8 132.3 27.8Q139.1 27.8 144.8 30Q150.6 32.2 154.8 36.3Q158.9 40.5 161.2 46.5Q163.5 52.5 163.5 60.2Q163.5 62.4 163.3 63.7Q163.1 65.1 162.6 66Q162.2 66.8 161.3 67.1Q160.5 67.4 159.2 67.4ZM197.2 -2.8V100H178.2V-2.8ZM260.9 56.1Q260.9 53.1 260.1 50.4Q259.3 47.8 257.6 45.7Q255.9 43.6 253.3 42.4Q250.7 41.2 247 41.2Q240.2 41.2 236.3 45.1Q232.5 48.9 231.3 56.1ZM231 67.4Q231.9 77.4 236.7 82Q241.5 86.6 249.2 86.6Q253.1 86.6 256 85.7Q258.9 84.8 261 83.6Q263.2 82.5 265 81.6Q266.7 80.6 268.4 80.6Q270.6 80.6 271.9 82.3L277.4 89.2Q274.4 92.7 270.7 95Q267.1 97.3 263.1 98.7Q259.2 100 255.2 100.5Q251.2 101 247.5 101Q240 101 233.6 98.6Q227.2 96.1 222.4 91.4Q217.6 86.6 214.8 79.5Q212.1 72.4 212.1 63Q212.1 55.8 214.4 49.3Q216.8 42.9 221.3 38.2Q225.8 33.4 232.2 30.6Q238.6 27.8 246.7 27.8Q253.5 27.8 259.2 30Q265 32.2 269.2 36.3Q273.3 40.5 275.6 46.5Q277.9 52.5 277.9 60.2Q277.9 62.4 277.7 63.7Q277.5 65.1 277.1 66Q276.6 66.8 275.7 67.1Q274.9 67.4 273.6 67.4ZM357.9 28.9 330 100H312.7L284.8 28.9H300.6Q302.7 28.9 304.1 29.9Q305.4 30.9 306 32.4L317.9 67.5Q319.1 71.1 320 74.5Q320.9 77.9 321.6 81.4Q322.3 77.9 323.3 74.5Q324.2 71.1 325.4 67.5L337.8 32.4Q338.2 30.9 339.6 29.9Q341 28.9 342.9 28.9ZM388.3 28.9V100H369.3V28.9ZM390.6 8.8Q390.6 11.2 389.6 13.2Q388.6 15.3 387 16.9Q385.4 18.5 383.2 19.4Q381 20.3 378.6 20.3Q376.2 20.3 374.1 19.4Q372 18.5 370.4 16.9Q368.8 15.3 367.9 13.2Q367 11.2 367 8.8Q367 6.3 367.9 4.2Q368.8 2.1 370.4 0.6Q372 -1 374.1 -1.9Q376.2 -2.8 378.6 -2.8Q381 -2.8 383.2 -1.9Q385.4 -1 387 0.6Q388.6 2.1 389.6 4.2Q390.6 6.3 390.6 8.8ZM439.4 27.8Q447.3 27.8 453.9 30.4Q460.4 32.9 465.1 37.7Q469.8 42.4 472.4 49.1Q474.9 55.9 474.9 64.4Q474.9 72.8 472.4 79.6Q469.8 86.4 465.1 91.2Q460.4 95.9 453.9 98.5Q447.3 101 439.4 101Q431.3 101 424.7 98.5Q418.1 95.9 413.4 91.2Q408.8 86.4 406.2 79.6Q403.6 72.8 403.6 64.4Q403.6 55.9 406.2 49.1Q408.8 42.4 413.4 37.7Q418.1 32.9 424.7 30.4Q431.3 27.8 439.4 27.8ZM439.4 86.8Q447.5 86.8 451.4 81.2Q455.3 75.5 455.3 64.4Q455.3 53.4 451.4 47.8Q447.5 42.2 439.4 42.2Q431 42.2 427.1 47.8Q423.2 53.4 423.2 64.4Q423.2 75.5 427.1 81.2Q431 86.8 439.4 86.8ZM507.3 37.2Q509.4 35.1 511.8 33.4Q514.1 31.7 516.6 30.5Q519.2 29.2 522.2 28.5Q525.2 27.8 528.7 27.8Q534.5 27.8 539 29.8Q543.5 31.8 546.6 35.4Q549.6 39 551.2 44Q552.7 48.9 552.7 54.9V100H533.8V54.9Q533.8 48.9 531 45.7Q528.3 42.4 522.9 42.4Q518.9 42.4 515.4 44.1Q511.9 45.8 508.7 48.9V100H489.7V28.9H501.4Q505 28.9 506.1 32.3Z"></path>
+  <p class="lockup"><svg viewBox="0 0 316 64" role="img" aria-label="Celevion">
+    <defs><linearGradient id="hg" gradientUnits="userSpaceOnUse" x1="4" y1="44" x2="60" y2="20"><stop offset="0" class="g1"></stop><stop offset="1" class="g2"></stop></linearGradient><mask id="hm" maskUnits="userSpaceOnUse" x="0" y="0" width="64" height="64"><rect width="64" height="64" fill="white"></rect><circle cx="38" cy="26" r="17" fill="black"></circle><path d="M61 32A29 9 0 0 1 3 32" transform="rotate(-18 32 32)" fill="none" stroke="black" stroke-width="8.5"></path></mask></defs><path d="M32 10a22 22 0 1 0 0.01 0Z" fill="url(#hg)" mask="url(#hm)"></path><path d="M61 32A29 9 0 0 1 3 32" transform="rotate(-18 32 32)" fill="none" stroke="url(#hg)" stroke-width="3.6" stroke-linecap="round"></path><path d="M38 18.5Q39.1 25.9 46 27Q39.1 28.1 38 35.5Q36.9 28.1 30 27Q36.9 25.9 38 18.5Z" fill="currentColor"></path>
+    <g class="m-word" transform="translate(78 21) scale(0.55)"><path fill="none" stroke="currentColor" stroke-width="7" d="M52 3.5H20A16.5 16.5 0 0 0 20 36.5H52"></path><path fill="none" stroke="currentColor" stroke-width="7" stroke-linejoin="miter" d="M110 3.5H67.5V36.5H110M67.5 20H104"></path><path fill="none" stroke="currentColor" stroke-width="7" stroke-linejoin="miter" d="M125.5 0V36.5H166"></path><path fill="none" stroke="currentColor" stroke-width="7" stroke-linejoin="miter" d="M224 3.5H181.5V36.5H224M181.5 20H218"></path><path fill="currentColor" d="M236 0H244.2L262 30.6L279.8 0H288L266.2 40H257.8Z"></path><rect fill="currentColor" x="300" y="0" width="7" height="40"></rect><rect fill="none" stroke="currentColor" stroke-width="7" x="322.5" y="3.5" width="45" height="33" rx="16.5"></rect><path fill="currentColor" d="M383 0H390V40H383ZM422 0H429V40H422ZM383 0H391.5L429 40H420.5Z"></path></g>
   </svg></p>
   <nav class="lang" aria-label="Language">
     <a href="index.html" aria-current="page" hreflang="en" lang="en">English</a>
@@ -175,12 +171,15 @@ dd { margin: 0.5rem 0 0; color: var(--muted); max-width: 38ch; }
       <p class="lead">Celevion is an independent studio founded by Loïc Cantin. We build compact, single-player games that live entirely on your phone: no account, no server, no connection once the game is installed.</p>
     </div>
     <svg class="orbit" viewBox="0 0 400 400" aria-hidden="true" focusable="false">
-      <circle class="ring" cx="200" cy="200" r="186"></circle>
-      <circle class="ring" cx="200" cy="200" r="146"></circle>
-      <g class="moon-a"><circle class="moon" cx="331.5" cy="68.5" r="7"></circle></g>
-      <g class="moon-b"><circle class="moon2" cx="96.8" cy="303.2" r="5"></circle></g>
-      <path class="track" d="M259.1 129.5A92 92 0 1 0 259.1 270.5"></path>
-      <g class="ball"><circle cx="292" cy="200" r="27.6"></circle></g>
+      <circle class="ring-bg" cx="200" cy="200" r="190"></circle>
+      <circle class="ring-bg" cx="200" cy="200" r="160"></circle>
+      <g transform="translate(8 8) scale(6)">
+        <defs><linearGradient id="og" gradientUnits="userSpaceOnUse" x1="4" y1="44" x2="60" y2="20"><stop offset="0" class="g1"></stop><stop offset="1" class="g2"></stop></linearGradient>
+        <mask id="om" maskUnits="userSpaceOnUse" x="0" y="0" width="64" height="64"><rect width="64" height="64" fill="white"></rect><circle cx="38" cy="26" r="17" fill="black"></circle><path d="M61 32A29 9 0 0 1 3 32" transform="rotate(-18 32 32)" fill="none" stroke="black" stroke-width="8.5"></path></mask></defs>
+        <path class="planet" d="M32 10a22 22 0 1 0 0.01 0Z" fill="url(#og)" mask="url(#om)"></path>
+        <path class="hero-ring" d="M61 32A29 9 0 0 1 3 32" transform="rotate(-18 32 32)" fill="none" stroke="url(#og)" stroke-width="3.6" stroke-linecap="round" pathLength="100"></path>
+        <path class="hero-star" d="M38 18.5Q39.1 25.9 46 27Q39.1 28.1 38 35.5Q36.9 28.1 30 27Q36.9 25.9 38 18.5Z"></path>
+      </g>
     </svg>
   </section>
 
@@ -225,8 +224,7 @@ dd { margin: 0.5rem 0 0; color: var(--muted); max-width: 38ch; }
 
 <footer class="foot wrap">
   <svg class="foot-mark" viewBox="0 0 64 64" aria-hidden="true" focusable="false">
-    <path class="m-track" d="M44.86 16.68A20 20 0 1 0 44.86 47.32"></path>
-    <circle class="m-ball" cx="52" cy="32" r="6"></circle>
+    <defs><linearGradient id="ftg" gradientUnits="userSpaceOnUse" x1="4" y1="44" x2="60" y2="20"><stop offset="0" class="g1"></stop><stop offset="1" class="g2"></stop></linearGradient><mask id="ftm" maskUnits="userSpaceOnUse" x="0" y="0" width="64" height="64"><rect width="64" height="64" fill="white"></rect><circle cx="38" cy="26" r="17" fill="black"></circle><path d="M61 32A29 9 0 0 1 3 32" transform="rotate(-18 32 32)" fill="none" stroke="black" stroke-width="8.5"></path></mask></defs><path d="M32 10a22 22 0 1 0 0.01 0Z" fill="url(#ftg)" mask="url(#ftm)"></path><path d="M61 32A29 9 0 0 1 3 32" transform="rotate(-18 32 32)" fill="none" stroke="url(#ftg)" stroke-width="3.6" stroke-linecap="round"></path><path d="M38 18.5Q39.1 25.9 46 27Q39.1 28.1 38 35.5Q36.9 28.1 30 27Q36.9 25.9 38 18.5Z" fill="currentColor"></path>
   </svg>
   <p>© 2026 Celevion — Loïc Cantin, France.</p>
   <p><a href="mailto:contact@celevion.com">contact@celevion.com</a></p>
