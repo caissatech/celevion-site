@@ -141,12 +141,10 @@ dd { margin: 0.5rem 0 0; color: var(--muted); max-width: 38ch; }
 .doc section { margin-top: clamp(2rem, 4vw, 3rem); }
 .doc p { max-width: 68ch; }
 .doc .lead { max-width: 52ch; }
-.notice { border-left: 3px solid var(--c2); background: var(--band); border-radius: 0 8px 8px 0; padding: 0.9rem 1.15rem; margin: 1.75rem 0 0; }
 .mentions { display: grid; gap: 0 2.5rem; margin: 1.5rem 0 0; }
 .mentions > div { border-top: 1px solid var(--line); padding-block: 0.85rem; }
 .mentions dt { font-family: var(--text); font-size: 0.8rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); }
 .mentions dd { margin: 0.3rem 0 0; color: var(--ink); max-width: none; }
-.todo { color: var(--c2); font-weight: 700; }
 .refs { max-width: 72ch; margin: 1.25rem 0 0; padding-left: 1.15rem; }
 .refs li { margin-bottom: 0.85rem; color: var(--muted); }
 .refs strong { color: var(--ink); }
@@ -173,7 +171,6 @@ dd { margin: 0.5rem 0 0; color: var(--muted); max-width: 38ch; }
   <section class="doc wrap" aria-labelledby="doc-title">
     <h1 id="doc-title">Mentions légales</h1>
     <p class="lead">Qui édite celevion.com, qui l'héberge, et sur quels textes officiels cette page s'appuie.</p>
-    <p class="notice">Toute mention signalée « à compléter » doit être renseignée par l'éditeur avant la mise en ligne du site.</p>
 
     <section aria-labelledby="publisher-title">
       <h2 id="publisher-title">Éditeur du site</h2>
@@ -196,7 +193,7 @@ dd { margin: 0.5rem 0 0; color: var(--muted); max-width: 38ch; }
         </div>
         <div>
           <dt>Adresse</dt>
-          <dd class="todo">À compléter — adresse du domicile ou adresse de domiciliation.</dd>
+          <dd>32 rue de Paris, 92100 Boulogne-Billancourt, France</dd>
         </div>
         <div>
           <dt>Courriel</dt>
@@ -204,11 +201,11 @@ dd { margin: 0.5rem 0 0; color: var(--muted); max-width: 38ch; }
         </div>
         <div>
           <dt>SIREN (numéro d'immatriculation)</dt>
-          <dd class="todo">À compléter — numéro d'immatriculation au registre national unique des entreprises (RNE).</dd>
+          <dd>100 596 600 — numéro d'immatriculation au registre national unique des entreprises (RNE).</dd>
         </div>
         <div>
           <dt>TVA intracommunautaire</dt>
-          <dd class="todo">À compléter — le numéro FR… ou « non assujetti à la TVA ».</dd>
+          <dd>FR17100596600</dd>
         </div>
       </dl>
     </section>

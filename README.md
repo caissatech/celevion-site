@@ -15,11 +15,8 @@ Four pages, no build step, no dependency:
 The legal notice names the publisher (an individual business, *entrepreneur individuel*), the
 hosting provider (GitHub, Inc., which serves the site through GitHub Pages) and the official
 texts it relies on — LCEN art. 1-1 and 1-2, French Commercial Code art. R. 526-27 and the
-Service Public Entreprendre sheet F37351. Three entries are still left for the publisher to
-fill in before the site goes online: address, SIREN and EU VAT number. They carry the class
-`todo` and the text "to be completed" / « à compléter »; the pages must not be published while
-any of them remains. The publisher's telephone number is not published yet and will be added
-in one commit once the line is available.
+Service Public Entreprendre sheet F37351. The publisher's telephone number is not published
+yet — no line exists yet — and the entry will be added in one commit as soon as it does.
 
 `logo.svg` (512 × 512, opaque night background, mark + wordmark) is the profile picture for
 TikTok, Google Play and YouTube; it stays readable inside a circular crop. It is a flat,
